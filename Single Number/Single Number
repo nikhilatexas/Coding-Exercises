@@ -1,0 +1,21 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+       Map<Integer, Integer> count = new HashMap<Integer, Integer>();
+       for(int i = 0; i < nums.length; i++) {
+           int number = nums[i];
+           if(count.get(number) == null) {
+               count.put(number, 1);
+           } else {
+               count.put(number, count.get(number) + 1);
+           }
+       }
+        int answer = -1;
+        for(Integer n: count.keySet()) {
+            if(count.get(n) == 1) {
+                answer = n;
+                break;
+            }
+        }
+        return answer;
+    }
+}
